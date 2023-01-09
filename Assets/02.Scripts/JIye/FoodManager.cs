@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
+    public bool isMerging = false;
     public static FoodManager instance = null;
 
     public FoodEnum receip;
@@ -42,38 +43,47 @@ public class FoodManager : MonoBehaviour
     /// <param name="food2"></param>
     public GameObject TryMerge(Food food1, Food food2, Vector2 Pos)
     {
-        if (food1.foodName == food2.foodName || (food1.foodName == "고춧기름" && food2.foodName == "와사비") || (food2.foodName == "고춧기름" && food1.foodName == "와사비"))        //실패한 경우
-
+        if (food1.myLevel == 0 && food2.myLevel == 0)
         {
-            //Destroy(food1.gameObject);
-            //Destroy(food2.gameObject);
-
-            //쓰레기
-            MoneyCount.instance.MakeTrash();
-            return trashPrefab;
+            return Merge(food1, Pos); // food1을 삭제 후 병합
         }
-
-        if (food1.myLevel == food2.myLevel)
+        else if ((food1.myLevel == 1 && food2.myLevel > 1) || (food2.myLevel == 1 && food1.myLevel > 1))
         {
-            if (food1.myLevel == 4)       //기본 라멘에서 추가 제료가 들어가는 상태라면
+            Debug.Log("콤바인 작동");
+            return Merge(food1, food2);
+            /*if (food1.myLevel == 4)       //기본 라멘에서 추가 제료가 들어가는 상태라면 (완성 상태 체크 = LV4) 
             {
-                Food mergeFood = food1.isRamen == true ? food1 : food2;
+                Food mergeFood = food1.isRamen == true ? food1 : food2; //
                 Food deFood = food1.isRamen == false ? food1 : food2;
                 return Merge(mergeFood, deFood);
             }
-            else
+            else //Lv4 이하일 때
             {
                 //Destroy(food2.gameObject);
-                return Merge(food1, Pos);
-            }
+                return Merge(food1, Pos); // food1을 삭제 후 병합
+            }*/
         }
 
         return food2.gameObject;
     }
 
-    private GameObject Merge(Food food, Vector2 Pos)
+    private GameObject Merge(Food food, Vector2 Pos) //병합 Lv4 < Object
     {
         Food mergeFood = null;
+
+        mergeFood = food.nextFood[0].GetComponent<Food>();
+
+        if (mergeFood.isRamen)      //마지막 음식일때 체크
+        {
+            CheckReceip(mergeFood);
+        }
+
+        isMerging = true;
+        Destroy(food.gameObject); //food 삭제
+
+        return mergeFood.gameObject;
+
+        /*Food mergeFood = null;
 
         //mergeFood = Instantiate(food.nextFood[0], Pos, Quaternion.identity).GetComponent<Food>();
         mergeFood = food.nextFood[0].GetComponent<Food>();
@@ -83,30 +93,75 @@ public class FoodManager : MonoBehaviour
             CheckReceip(mergeFood);
         }
 
-        Destroy(food.gameObject);
+        Destroy(food.gameObject); //food 삭제
 
         return mergeFood.gameObject;
+        */
     }
 
-    private GameObject Merge(Food food1, Food food2)
+    private GameObject Merge(Food food1, Food food2) //병합 Lv4 >= Object
     {
+        Debug.Log("food1의 이름은: " + food1.foodName + " food2의 이름은: " + food2.foodName);
         Food mergeFood = null;
         Transform trans = food1.gameObject.transform;
 
-        switch (food2.foodName)
+        if(food2.myLevel == 1) //재료가 앞에 있을 경우 병합하려는 대상을 서로 바꿔준 후 계산
         {
-            case "고춧기름":
-                //mergeFood = Instantiate(food1.nextFood[0], trans.position, Quaternion.identity).GetComponent<Food>();
-                mergeFood = mergeFood = food1.nextFood[0].GetComponent<Food>();
+            Food changeFood = null;
+            changeFood = food1;
+            food1 = food2;
+            food2 = changeFood;
+        }
 
+        Debug.Log("food1의 이름은: " + food1.foodName + " food2의 이름은: " + food2.foodName);
+
+        switch (food2.myLevel)
+        {
+            case 2:
+                switch (food1.foodName)
+                {
+                    case "차슈":
+                        mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                        isMerging = true;
+                        break;
+                    case "계란":
+                        mergeFood = mergeFood = food2.nextFood[1].GetComponent<Food>();
+                        isMerging = true;
+                        break;
+                    case "숙주":
+                        //mergeFood = Instantiate(food1.nextFood[0], trans.position, Quaternion.identity).GetComponent<Food>();
+                        mergeFood = mergeFood = food2.nextFood[2].GetComponent<Food>();
+                        isMerging = true;
+                        break;
+                    case "고추기름":
+                        mergeFood = mergeFood = food2.nextFood[3].GetComponent<Food>();
+                        isMerging = true;
+                        break;
+                    case "와사비":
+                        //mergeFood = Instantiate(food1.nextFood[4], trans.position, Quaternion.identity).GetComponent<Food>();
+                        mergeFood = mergeFood = food2.nextFood[4].GetComponent<Food>();
+                        isMerging = true;
+                        break;
+                    default:
+                        isMerging = false;
+                        break;
+                }
                 break;
-
-            case "와사비":
-                mergeFood = Instantiate(food1.nextFood[1], trans.position, Quaternion.identity).GetComponent<Food>();
-                mergeFood = mergeFood = food1.nextFood[1].GetComponent<Food>();
-
+            case 3:
+                mergeFood = food2;
+                isMerging = false;
+                break;
+            case 4:
+                mergeFood = food2;
+                isMerging = false;
+                break;
+            case 5:
+                mergeFood = food2;
+                isMerging = false;
                 break;
             default:
+                mergeFood = food2;
+                isMerging = false;
                 break;
         }
 
@@ -115,16 +170,19 @@ public class FoodManager : MonoBehaviour
             CheckReceip(mergeFood);
         }
 
+        if(isMerging)
+            Destroy(food2.gameObject);
 
-        //Destroy(food1.gameObject);
         //Destroy(food2.gameObject);
 
         return mergeFood.gameObject;
+
     }
 
-    private GameObject CheckReceip(Food food)
+    private GameObject CheckReceip(Food food) //레시피 체크(성공적으로 병합되었나? or 실패하였나?)
     {
-        if (food.myFood == receip && food.myLevel >= 4)
+        
+        if (food.myFood == receip) //&& food.myLevel >= 4)
         {
             //성공
             flowManager.MenuSuccess();
@@ -136,6 +194,7 @@ public class FoodManager : MonoBehaviour
             //실패 => 쓰레기
             return trashPrefab;
         }
+        
     }
 
 }

@@ -12,6 +12,8 @@ public class FoodLevel
 
 public class SystemManager : MonoBehaviour
 {
+    public FoodManager foodManager;
+
     public List<FoodLevel> foodList = new List<FoodLevel>();
     public GameObject Quit;
     public Text Score, BestScore, Plus;
@@ -25,14 +27,13 @@ public class SystemManager : MonoBehaviour
     float yOffset = -3.224f;
     float interval = 0.905f;
 
-    private bool firstCheck;
-    private int maxLevel;
+    public bool firstCheck;
+    public int maxLevel;
 
     // x 1.62
     // y 1.62
 
     // 1.356f - 0.451 = 0.905f
-
 
     void Start()
     {
@@ -105,10 +106,7 @@ public class SystemManager : MonoBehaviour
         // 이동 될 좌표에 비어있고, 이동 전 좌표에 존재하면 이동
         if (Square[x2, y2] == null && Square[x1, y1] != null)
         {
-            move = true;
-            Square[x1, y1].GetComponent<Moving>().Move(x2, y2, false);
-            Square[x2, y2] = Square[x1, y1];
-            Square[x1, y1] = null;
+            Move(x1, y1, x2, y2);
         }
 
 
@@ -120,13 +118,24 @@ public class SystemManager : MonoBehaviour
             Food food1 = Square[x1, y1].GetComponent<Food>();
             Food food2 = Square[x2, y2].GetComponent<Food>();
 
-            if (food1.myLevel != food2.myLevel || food1.myLevel == -1 && food2.myLevel == -1)
+            //if (food1.myLevel != food2.myLevel || food1.myLevel == -1 && food2.myLevel == -1 || food1.foodName == food2.foodName)
+            //{
+            //    return;
+            //}
+            if (food1.foodName == food2.foodName || (food1.myLevel > 0 && food2.myLevel > 0 && food1.myLevel == food2.myLevel) ) //예외처리
             {
                 return;
             }
+
             move = true;
 
             GameObject food = FoodManager.instance.TryMerge(food1, food2, new Vector3(interval * x2 - xOffset, interval * y2 + yOffset, 0));
+
+            if (foodManager.isMerging == false)
+            {
+                return;
+            }
+            foodManager.isMerging = false;
 
             if (food.GetComponent<Food>().myLevel > maxLevel)
             {
@@ -141,6 +150,14 @@ public class SystemManager : MonoBehaviour
             Square[x2, y2].tag = "Combine";
             Square[x2, y2].GetComponent<Animator>().SetTrigger("Combine");
         }
+    }
+
+    void Move(int x1, int y1, int x2, int y2)
+    {
+        move = true;
+        Square[x1, y1].GetComponent<Moving>().Move(x2, y2, false);
+        Square[x2, y2] = Square[x1, y1];
+        Square[x1, y1] = null;
     }
 
     // 스폰
@@ -167,7 +184,7 @@ public class SystemManager : MonoBehaviour
         }
         else // 4단계가 없다면 
         {
-            int randomFoodList = UnityEngine.Random.Range(0, maxLevel + 1);
+            int randomFoodList = UnityEngine.Random.Range(1, 2);
             Square[x, y] = Instantiate(foodList[randomFoodList].foodPrefabs[UnityEngine.Random.Range(0, foodList[randomFoodList].foodPrefabs.Length)], 
                 new Vector3(interval * x - xOffset, interval * y + yOffset, 0), Quaternion.identity);
         }
