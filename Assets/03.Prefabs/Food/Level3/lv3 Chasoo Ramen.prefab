@@ -101,7 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myLevel: 3
   foodName: "\uCC28\uC288\uB77C\uBA58"
-  nextFood: []
+  nextFood:
+  - {fileID: 6452866252832966104, guid: b4ce090d5de1fb842a17d8e2f6b0e91b, type: 3}
+  - {fileID: 6452866252832966104, guid: 89a1e98d81ccb984a800f90d88e12c58, type: 3}
   myFood: 1
   isRamen: 0
   isTrash: 0

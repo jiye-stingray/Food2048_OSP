@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6452866252832966106}
   - component: {fileID: 6452866252832966107}
   - component: {fileID: 6452866252832966101}
-  - component: {fileID: 658582004023377449}
-  - component: {fileID: -8092072530499816856}
+  - component: {fileID: 498899655025467940}
+  - component: {fileID: -7988268654447337032}
   m_Layer: 0
-  m_Name: Egg(FoodPrefab)
+  m_Name: HotSos(FoodPrefab) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73f9f8d5a19bce6439de1973051caa44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8687e785b0acb1c4082eb6888390b0cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLevel: 1
-  foodName: "\uACC4\uB780"
+  foodName: "\uACE0\uCDA7\uAE30\uB984"
   nextFood:
-  - {fileID: 6452866252832966104, guid: 52d524b9c28a92d41ba89abd785986ff, type: 3}
+  - {fileID: 6452866252832966104, guid: 9c08411577c97de47a34f0e0d338fa13, type: 3}
   myFood: 3
   isRamen: 0
   isTrash: 0
---- !u!114 &658582004023377449
+--- !u!114 &498899655025467940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fce23b2153f44546a82569523b5e308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &-8092072530499816856
+--- !u!95 &-7988268654447337032
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

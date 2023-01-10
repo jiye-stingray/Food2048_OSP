@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6452866252832966106}
   - component: {fileID: 6452866252832966107}
   - component: {fileID: 6452866252832966101}
-  - component: {fileID: 658582004023377449}
-  - component: {fileID: -8092072530499816856}
+  - component: {fileID: -3215151678040403301}
+  - component: {fileID: -898437430363289830}
   m_Layer: 0
-  m_Name: Egg(FoodPrefab)
+  m_Name: lv4 SukCha Ramen(FoodPrefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73f9f8d5a19bce6439de1973051caa44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7434e5c5310b9994f9e89b341c2b7dca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,14 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1e83bf4add3b0448752c2d30751866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLevel: 1
-  foodName: "\uACC4\uB780"
+  myLevel: 4
+  foodName: "\uC219\uCC28\uB77C\uBA58"
   nextFood:
-  - {fileID: 6452866252832966104, guid: 52d524b9c28a92d41ba89abd785986ff, type: 3}
-  myFood: 3
-  isRamen: 0
+  - {fileID: 6452866252832966104, guid: 7e1ccd1c7aca6c04780c34b6f2fcac2d, type: 3}
+  myFood: 6
+  isRamen: 1
   isTrash: 0
---- !u!114 &658582004023377449
+--- !u!114 &-3215151678040403301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fce23b2153f44546a82569523b5e308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &-8092072530499816856
+--- !u!95 &-898437430363289830
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

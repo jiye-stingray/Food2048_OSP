@@ -122,7 +122,7 @@ public class SystemManager : MonoBehaviour
             //{
             //    return;
             //}
-            if (food1.foodName == food2.foodName || (food1.myLevel > 0 && food2.myLevel > 0 && food1.myLevel == food2.myLevel) ) //예외처리
+            if (food1.myLevel > 1 && food2.myLevel > 1) //예외처리
             {
                 return;
             }
@@ -184,7 +184,8 @@ public class SystemManager : MonoBehaviour
         }
         else // 4단계가 없다면 
         {
-            int randomFoodList = UnityEngine.Random.Range(1, 2);
+            int randomFoodList = UnityEngine.Random.Range(0, 4);
+            if (randomFoodList > 0) randomFoodList = 1;
             Square[x, y] = Instantiate(foodList[randomFoodList].foodPrefabs[UnityEngine.Random.Range(0, foodList[randomFoodList].foodPrefabs.Length)], 
                 new Vector3(interval * x - xOffset, interval * y + yOffset, 0), Quaternion.identity);
         }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6452866252832966106}
   - component: {fileID: 6452866252832966107}
   - component: {fileID: 6452866252832966101}
-  - component: {fileID: -3215151678040403301}
-  - component: {fileID: -898437430363289830}
+  - component: {fileID: -8845435237084425571}
+  - component: {fileID: 905150043757879930}
   m_Layer: 0
-  m_Name: Ramen(FoodPrefab)
+  m_Name: Wassabi(FoodPrefab) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b73602b10a4f6b4fb2e65aac82b28f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 969ca81acad06824cb09b0485604f3af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,15 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1e83bf4add3b0448752c2d30751866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLevel: 4
-  foodName: "\uB3C8\uCF54\uCE20\uB77C\uBA58"
+  myLevel: 1
+  foodName: "\uC640\uC0AC\uBE44"
   nextFood:
-  - {fileID: 6452866252832966104, guid: 7e1ccd1c7aca6c04780c34b6f2fcac2d, type: 3}
-  - {fileID: 6452866252832966104, guid: e183abeb7147656458085a7d5fe500b4, type: 3}
-  myFood: 0
-  isRamen: 1
+  - {fileID: 6452866252832966104, guid: 5363865648a698d47a46f43aa3f0ec19, type: 3}
+  myFood: 3
+  isRamen: 0
   isTrash: 0
---- !u!114 &-3215151678040403301
+--- !u!114 &-8845435237084425571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fce23b2153f44546a82569523b5e308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &-898437430363289830
+--- !u!95 &905150043757879930
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

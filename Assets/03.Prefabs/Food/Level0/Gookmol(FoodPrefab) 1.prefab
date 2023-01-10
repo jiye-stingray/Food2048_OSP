@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6452866252832966106}
   - component: {fileID: 6452866252832966107}
   - component: {fileID: 6452866252832966101}
-  - component: {fileID: 658582004023377449}
-  - component: {fileID: -8092072530499816856}
+  - component: {fileID: -5599355434029812101}
+  - component: {fileID: 3350751189762044599}
   m_Layer: 0
-  m_Name: Egg(FoodPrefab)
+  m_Name: Gookmol(FoodPrefab) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73f9f8d5a19bce6439de1973051caa44, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: eaa064709b44a1947b7602892ec994c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,26 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1e83bf4add3b0448752c2d30751866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLevel: 1
-  foodName: "\uACC4\uB780"
+  myLevel: 0
+  foodName: "\uAD6D\uBB3C"
   nextFood:
-  - {fileID: 6452866252832966104, guid: 52d524b9c28a92d41ba89abd785986ff, type: 3}
+  - {fileID: 6452866252832966104, guid: bc62c27b25b56994a88c980c53049088, type: 3}
+  - {fileID: 6452866252832966104, guid: d824afcb6986627468a995c558076225, type: 3}
   myFood: 3
   isRamen: 0
   isTrash: 0
---- !u!114 &658582004023377449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6452866252832966104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fce23b2153f44546a82569523b5e308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &-8092072530499816856
+--- !u!95 &-5599355434029812101
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -138,3 +127,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3350751189762044599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6452866252832966104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fce23b2153f44546a82569523b5e308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

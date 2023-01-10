@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8059811527621438706}
   - component: {fileID: -8386131439838499440}
   m_Layer: 0
-  m_Name: HotRamen(FoodPrefab)
+  m_Name: lv5 HotRamen(FoodPrefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLevel: 5
-  foodName: "\uD56B\uB77C\uBA74"
+  foodName: "\uB3C8\uCF54\uCE20\uB77C\uBA58"
   nextFood:
   - {fileID: 0}
-  myFood: 2
+  myFood: 12
   isRamen: 1
   isTrash: 0
 --- !u!95 &-8059811527621438706

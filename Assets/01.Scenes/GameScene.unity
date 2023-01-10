@@ -1660,7 +1660,19 @@ PrefabInstance:
       objectReference: {fileID: 1163856686}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.size
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
+      propertyPath: foodList.Array.data[2].foodPrefabs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
+      propertyPath: foodList.Array.data[3].foodPrefabs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
+      propertyPath: foodList.Array.data[4].foodPrefabs.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.data[0]
@@ -1677,7 +1689,7 @@ PrefabInstance:
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 6452866252832966104, guid: 423d26a97051e6f4e9f67f497809cc9c, type: 3}
+      objectReference: {fileID: 6452866252832966104, guid: 9c08411577c97de47a34f0e0d338fa13, type: 3}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.data[4]
       value: 

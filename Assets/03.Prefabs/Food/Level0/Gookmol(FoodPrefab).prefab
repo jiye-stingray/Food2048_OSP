@@ -102,6 +102,7 @@ MonoBehaviour:
   myLevel: 0
   foodName: "\uAD6D\uBB3C"
   nextFood:
+  - {fileID: 6452866252832966104, guid: a806aa83f7749f64ba3ac5d08c4b0283, type: 3}
   - {fileID: 6452866252832966104, guid: d824afcb6986627468a995c558076225, type: 3}
   myFood: 3
   isRamen: 0

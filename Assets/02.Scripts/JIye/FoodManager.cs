@@ -43,9 +43,9 @@ public class FoodManager : MonoBehaviour
     /// <param name="food2"></param>
     public GameObject TryMerge(Food food1, Food food2, Vector2 Pos)
     {
-        if (food1.myLevel == 0 && food2.myLevel == 0)
+        if ((food1.myLevel == 0 && food2.myLevel == 0) || (food1.myLevel == 1 && food2.myLevel == 1 && food1.foodName == food2.foodName)) //둘 다 레벨 0일 때
         {
-            return Merge(food1, Pos); // food1을 삭제 후 병합
+            return Merge(food1, food2, Pos); // food1을 삭제 후 병합
         }
         else if ((food1.myLevel == 1 && food2.myLevel > 1) || (food2.myLevel == 1 && food1.myLevel > 1))
         {
@@ -67,36 +67,22 @@ public class FoodManager : MonoBehaviour
         return food2.gameObject;
     }
 
-    private GameObject Merge(Food food, Vector2 Pos) //병합 Lv4 < Object
+    private GameObject Merge(Food food1, Food food2,  Vector2 Pos) //병합 Lv4 < Object
     {
+        Debug.Log("food1의 이름은: " + food1.foodName);
         Food mergeFood = null;
+        
+        if(food1.myLevel <= 1 && food1.foodName == food2.foodName)
+            mergeFood = food1.nextFood[0].GetComponent<Food>();
+        else
+            mergeFood = food1.nextFood[1].GetComponent<Food>();
 
-        mergeFood = food.nextFood[0].GetComponent<Food>();
-
-        if (mergeFood.isRamen)      //마지막 음식일때 체크
-        {
-            CheckReceip(mergeFood);
-        }
+        if (food1.myLevel != 1)
+            Destroy(food1.gameObject); //food 삭제
 
         isMerging = true;
-        Destroy(food.gameObject); //food 삭제
 
         return mergeFood.gameObject;
-
-        /*Food mergeFood = null;
-
-        //mergeFood = Instantiate(food.nextFood[0], Pos, Quaternion.identity).GetComponent<Food>();
-        mergeFood = food.nextFood[0].GetComponent<Food>();
-
-        if (mergeFood.isRamen)      //마지막 음식일때 체크
-        {
-            CheckReceip(mergeFood);
-        }
-
-        Destroy(food.gameObject); //food 삭제
-
-        return mergeFood.gameObject;
-        */
     }
 
     private GameObject Merge(Food food1, Food food2) //병합 Lv4 >= Object
@@ -117,7 +103,7 @@ public class FoodManager : MonoBehaviour
 
         switch (food2.myLevel)
         {
-            case 2:
+            case 2: //lv2
                 switch (food1.foodName)
                 {
                     case "차슈":
@@ -129,35 +115,134 @@ public class FoodManager : MonoBehaviour
                         isMerging = true;
                         break;
                     case "숙주":
-                        //mergeFood = Instantiate(food1.nextFood[0], trans.position, Quaternion.identity).GetComponent<Food>();
                         mergeFood = mergeFood = food2.nextFood[2].GetComponent<Food>();
                         isMerging = true;
                         break;
-                    case "고추기름":
-                        mergeFood = mergeFood = food2.nextFood[3].GetComponent<Food>();
-                        isMerging = true;
-                        break;
-                    case "와사비":
-                        //mergeFood = Instantiate(food1.nextFood[4], trans.position, Quaternion.identity).GetComponent<Food>();
-                        mergeFood = mergeFood = food2.nextFood[4].GetComponent<Food>();
-                        isMerging = true;
-                        break;
                     default:
+                        mergeFood = food2;
                         isMerging = false;
                         break;
                 }
                 break;
-            case 3:
-                mergeFood = food2;
-                isMerging = false;
+            case 3: //lv3
+                if(food2.foodName == "차슈라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "계란":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        case "숙주":
+                            mergeFood = mergeFood = food2.nextFood[1].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
+                else if (food2.foodName == "숙주라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "차슈":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        case "계란":
+                            mergeFood = mergeFood = food2.nextFood[1].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
+                else if (food2.foodName == "계란라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "차슈":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        case "숙주":
+                            mergeFood = mergeFood = food2.nextFood[1].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
                 break;
             case 4:
-                mergeFood = food2;
-                isMerging = false;
+                if (food2.foodName == "차계라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "숙주":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
+                else if (food2.foodName == "숙차라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "계란":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
+                else if (food2.foodName == "숙계라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "차슈":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
                 break;
             case 5:
-                mergeFood = food2;
-                isMerging = false;
+                if (food2.foodName == "돈코츠라멘")
+                {
+                    switch (food1.foodName)
+                    {
+                        case "와사비":
+                            mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        case "고추기름":
+                            mergeFood = mergeFood = food2.nextFood[1].GetComponent<Food>();
+                            isMerging = true;
+                            break;
+                        default:
+                            mergeFood = food2;
+                            isMerging = false;
+                            break;
+                    }
+                }
                 break;
             default:
                 mergeFood = food2;
