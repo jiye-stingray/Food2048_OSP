@@ -106,7 +106,7 @@ MonoBehaviour:
   - {fileID: 6452866252832966104, guid: 15e19547eb80af646b893d640be60f02, type: 3}
   - {fileID: 6452866252832966104, guid: c1bba07691447cb4086d09df277643a2, type: 3}
   myFood: 0
-  isRamen: 0
+  isRamen: 1
   isTrash: 0
 --- !u!114 &-7681556945365122265
 MonoBehaviour:

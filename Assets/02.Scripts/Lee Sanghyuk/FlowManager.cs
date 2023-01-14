@@ -7,7 +7,11 @@ using UnityEngine.SceneManagement;
 namespace _02.Scripts.Lee_Sanghyuk
 {
     public class FlowManager : MonoBehaviour
-    {        
+    {
+
+        public GameManager gameManager;
+        public MoneyCount moneyCount;
+
         public TMP_Text clock;
     
         private bool _isPlayTime;
@@ -18,8 +22,8 @@ namespace _02.Scripts.Lee_Sanghyuk
 
         private void Start()
         {
-            MoneyCount.instance.money = GameManager.Instance.money;
-            _playTime = GameManager.Instance.time;
+            moneyCount.money = gameManager.money;
+            _playTime = gameManager.time;
             
             ClockTime();
             StartCoroutine(TimerCor());
@@ -37,8 +41,8 @@ namespace _02.Scripts.Lee_Sanghyuk
             }
 
             print("하루끝남");
-            MoneyCount.instance.Calculate();
-            GameManager.Instance.time = 0;
+            moneyCount.Calculate();
+            gameManager.time = 0;
         }
 
         public void ClockTime()
@@ -56,7 +60,7 @@ namespace _02.Scripts.Lee_Sanghyuk
 
         public void Open()
         {
-            GameManager.Instance.saveData.days++;
+            gameManager.saveData.days++;
             Time.timeScale = 1;
             SceneManager.LoadScene("GameScene");
         }
@@ -64,11 +68,13 @@ namespace _02.Scripts.Lee_Sanghyuk
         // ReSharper disable Unity.PerformanceAnalysis
         public void MenuSuccess()
         {
-            GameManager.Instance.money = MoneyCount.instance.money;
-            GameManager.Instance.time = _playTime;
-            MoneyCount.instance.SalesRamen();
-            DialogueData.instance.OrderEnd();
-            SceneManager.LoadScene("GameScene");
+            moneyCount.money += 10;
+            //gameManager.money = moneyCount.money;
+            //gameManager.time = _playTime;
+            //moneyCount.SalesRamen();
+            //DialogueData.instance.OrderEnd();
+            Debug.Log("라멘 팔았다!");
+            //SceneManager.LoadScene("GameScene");
         }
     }
 }

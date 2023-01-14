@@ -104,7 +104,7 @@ MonoBehaviour:
   nextFood:
   - {fileID: 6452866252832966104, guid: e183abeb7147656458085a7d5fe500b4, type: 3}
   - {fileID: 6452866252832966104, guid: 855c6fac09efa2642927e32a44a75efa, type: 3}
-  myFood: 10
+  myFood: 7
   isRamen: 1
   isTrash: 0
 --- !u!95 &-8059811527621438706

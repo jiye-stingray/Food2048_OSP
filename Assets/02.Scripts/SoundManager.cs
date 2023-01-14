@@ -17,7 +17,6 @@ public class SoundManager : MonoBehaviour
 
         if (null == instance)
         {
-            //�� Ŭ���� �ν��Ͻ��� ź������ �� �������� instance�� ���ӸŴ��� �ν��Ͻ��� ������� �ʴٸ�, �ڽ��� �־��ش�.
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }

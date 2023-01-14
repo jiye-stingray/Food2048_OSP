@@ -99,11 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1e83bf4add3b0448752c2d30751866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLevel: 5
-  foodName: "\uB3C8\uCF54\uCE20\uB77C\uBA58"
-  nextFood:
-  - {fileID: 0}
-  myFood: 12
+  myLevel: 6
+  foodName: "\uB9E4\uC6B4\uB3C8\uCF54\uCE20\uB77C\uBA58"
+  nextFood: []
+  myFood: 8
   isRamen: 1
   isTrash: 0
 --- !u!95 &-8059811527621438706

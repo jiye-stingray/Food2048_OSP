@@ -82,6 +82,11 @@ public class FoodManager : MonoBehaviour
 
         isMerging = true;
 
+        if (mergeFood.isRamen)      //마지막 음식일때 체크
+        {
+            CheckReceip(mergeFood);
+        }
+
         return mergeFood.gameObject;
     }
 
@@ -233,7 +238,7 @@ public class FoodManager : MonoBehaviour
                             mergeFood = mergeFood = food2.nextFood[0].GetComponent<Food>();
                             isMerging = true;
                             break;
-                        case "고추기름":
+                        case "고춧기름":
                             mergeFood = mergeFood = food2.nextFood[1].GetComponent<Food>();
                             isMerging = true;
                             break;

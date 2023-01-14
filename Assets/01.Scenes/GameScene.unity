@@ -296,6 +296,7 @@ MonoBehaviour:
   ramenSalesCost: {fileID: 1683473560}
   revivalCount: 0
   money: 0
+  _makeRamenCount: 0
 --- !u!4 &24795361
 Transform:
   m_ObjectHideFlags: 0
@@ -986,7 +987,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 689457846}
-  - component: {fileID: 689457845}
+  - component: {fileID: 689457847}
   m_Layer: 0
   m_Name: FlowManager
   m_TagString: Untagged
@@ -994,19 +995,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &689457845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689457844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f088ba45444f1349883841d9b163b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clock: {fileID: 1092058912}
 --- !u!4 &689457846
 Transform:
   m_ObjectHideFlags: 0
@@ -1022,6 +1010,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &689457847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689457844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55960b6bab5b334c93547eb874e8549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  moneyCount: {fileID: 24795360}
+  clock: {fileID: 1092058912}
 --- !u!1 &764733612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,11 +1663,11 @@ PrefabInstance:
       objectReference: {fileID: 1163856686}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[2].foodPrefabs.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[3].foodPrefabs.Array.size
@@ -1689,15 +1692,19 @@ PrefabInstance:
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 6452866252832966104, guid: 9c08411577c97de47a34f0e0d338fa13, type: 3}
+      objectReference: {fileID: 6452866252832966104, guid: a6c3c7c430f401c42a6a66d36a58a760, type: 3}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[1].foodPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 6452866252832966104, guid: 5363865648a698d47a46f43aa3f0ec19, type: 3}
+      objectReference: {fileID: 6452866252832966104, guid: 52d524b9c28a92d41ba89abd785986ff, type: 3}
     - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
       propertyPath: foodList.Array.data[2].foodPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 6452866252832966104, guid: d824afcb6986627468a995c558076225, type: 3}
+      objectReference: {fileID: 6452866252832966104, guid: 9c08411577c97de47a34f0e0d338fa13, type: 3}
+    - target: {fileID: 126854267054563951, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
+      propertyPath: foodList.Array.data[2].foodPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6452866252832966104, guid: 5363865648a698d47a46f43aa3f0ec19, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7653d77585ae3f045babfece6ea6e04c, type: 3}
 --- !u!1 &1061386004
@@ -3498,7 +3505,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 689457845}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: _02.Scripts.Lee_Sanghyuk.FlowManager, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
@@ -3918,7 +3925,7 @@ PrefabInstance:
     - target: {fileID: 3261329634992565213, guid: 8b8c83995346c2849a410a02540a24b6, type: 3}
       propertyPath: flowManager
       value: 
-      objectReference: {fileID: 689457845}
+      objectReference: {fileID: 689457847}
     - target: {fileID: 3261329634992565214, guid: 8b8c83995346c2849a410a02540a24b6, type: 3}
       propertyPath: m_Name
       value: FoodManager
@@ -4009,7 +4016,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 689457845}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: _02.Scripts.Lee_Sanghyuk.FlowManager, Assembly-CSharp
         m_MethodName: GoToMenu
         m_Mode: 1

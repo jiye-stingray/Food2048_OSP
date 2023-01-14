@@ -184,8 +184,10 @@ public class SystemManager : MonoBehaviour
         }
         else // 4단계가 없다면 
         {
-            int randomFoodList = UnityEngine.Random.Range(0, 4);
-            if (randomFoodList > 0) randomFoodList = 1;
+            int randomFoodList = UnityEngine.Random.Range(0, 6);
+            if (randomFoodList > 0 && randomFoodList < 5) randomFoodList = 1; //확률 조정
+            else if (randomFoodList == 5) randomFoodList = 2;
+
             Square[x, y] = Instantiate(foodList[randomFoodList].foodPrefabs[UnityEngine.Random.Range(0, foodList[randomFoodList].foodPrefabs.Length)], 
                 new Vector3(interval * x - xOffset, interval * y + yOffset, 0), Quaternion.identity);
         }
