@@ -11,7 +11,9 @@ namespace _02.Scripts.Lee_Sanghyuk
 
         public GameManager gameManager;
         public MoneyCount moneyCount;
+        public SystemManager systemManager;
 
+        //UI 
         public TMP_Text clock;
     
         private bool _isPlayTime;
@@ -72,7 +74,8 @@ namespace _02.Scripts.Lee_Sanghyuk
             //gameManager.money = moneyCount.money;
             //gameManager.time = _playTime;
             //moneyCount.SalesRamen();
-            //DialogueData.instance.OrderEnd();
+            DialogueData.instance.OrderEnd();
+            systemManager.Reset();
             Debug.Log("라멘 팔았다!");
             //SceneManager.LoadScene("GameScene");
         }

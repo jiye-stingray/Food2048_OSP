@@ -196,4 +196,25 @@ public class SystemManager : MonoBehaviour
         Square[x, y].GetComponent<Animator>().SetTrigger("Spawn");
     }
 
+    public void Reset()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                if (Square[i, j] != null) {
+                    Debug.Log(Square[i, j]);
+                    Destroy(Square[i, j]);
+                }
+            }
+        }
+
+        firstCheck = false;
+        maxLevel = 0;
+
+        Spawn();
+
+        firstCheck = true;
+    }
+
 }

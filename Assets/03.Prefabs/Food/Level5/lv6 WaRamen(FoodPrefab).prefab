@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6452866252832966106}
   - component: {fileID: 6452866252832966107}
   - component: {fileID: 6452866252832966101}
-  - component: {fileID: -8059811527621438706}
-  - component: {fileID: -8386131439838499440}
+  - component: {fileID: 2413198763917819143}
+  - component: {fileID: -6273937594584752065}
   m_Layer: 0
-  m_Name: lv5 HotRamen(FoodPrefab)
+  m_Name: lv6 WaRamen(FoodPrefab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ef11bef8021f064459c0588e79c2e1ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5aab413ed2e3ec47946b4720757bc0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,12 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLevel: 6
-  foodName: "\uB9E4\uC6B4\uB3C8\uCF54\uCE20\uB77C\uBA58"
+  foodName: "\uC640\uC0AC\uBE44\uB3C8\uCF54\uCE20\uB77C\uBA58"
   nextFood: []
-  myFood: 8
+  eatPosition: {fileID: 0}
+  myFood: 9
   isRamen: 1
   isTrash: 0
---- !u!95 &-8059811527621438706
+  isMoving: 0
+  speed: 0.005
+--- !u!95 &2413198763917819143
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -125,7 +128,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-8386131439838499440
+--- !u!114 &-6273937594584752065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

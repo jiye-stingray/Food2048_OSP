@@ -6,6 +6,7 @@ using UnityEngine;
 public class FoodManager : MonoBehaviour
 {
     public bool isMerging = false;
+    bool isComplete = false;
     public static FoodManager instance = null;
 
     public FoodEnum receip;
@@ -23,6 +24,15 @@ public class FoodManager : MonoBehaviour
         {
             if (instance != this) //instance가 내가 아니라면 이미 instance가 하나 존재하고 있다는 의미
                 Destroy(this.gameObject); //둘 이상 존재하면 안되는 객체이니 방금 AWake된 자신을 삭제
+        }
+    }
+
+    private void Update()
+    {
+        if(isComplete)
+        {
+            flowManager.MenuSuccess();
+            isComplete = false;
         }
     }
 
@@ -269,22 +279,14 @@ public class FoodManager : MonoBehaviour
 
     }
 
-    private GameObject CheckReceip(Food food) //레시피 체크(성공적으로 병합되었나? or 실패하였나?)
+    private void CheckReceip(Food food) //레시피 체크(성공적으로 병합되었나? or 실패하였나?)
     {
         
         if (food.myFood == receip) //&& food.myLevel >= 4)
         {
             //성공
-            flowManager.MenuSuccess();
-            Debug.Log("fddfdgdg");
-            return food.gameObject;
-        }
-        else
-        {
-            //실패 => 쓰레기
-            return trashPrefab;
-        }
-        
+            isComplete = true;
+        }       
     }
 
 }

@@ -103,9 +103,12 @@ MonoBehaviour:
   foodName: "\uC219\uC8FC"
   nextFood:
   - {fileID: 6452866252832966104, guid: b8da2617d41534c47ac2d65cfd84e6f9, type: 3}
+  eatPosition: {fileID: 0}
   myFood: 3
   isRamen: 0
   isTrash: 0
+  isMoving: 0
+  speed: 0.005
 --- !u!114 &-5129586729819340000
 MonoBehaviour:
   m_ObjectHideFlags: 0

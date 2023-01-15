@@ -10,11 +10,8 @@ public class Food : MonoBehaviour
     public string foodName;       //음식이름
     public GameObject[] nextFood;   //다음 음식
 
-
     public FoodEnum myFood;     //최종 라면 상태
 
     public bool isRamen;        //라면상태 인가?
     public bool isTrash;
-
-
 }

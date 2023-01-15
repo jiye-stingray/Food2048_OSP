@@ -104,9 +104,12 @@ MonoBehaviour:
   nextFood:
   - {fileID: 6452866252832966104, guid: 2cbe54949e8cd334d92dd33139538f20, type: 3}
   - {fileID: 6452866252832966104, guid: d824afcb6986627468a995c558076225, type: 3}
+  eatPosition: {fileID: 0}
   myFood: 3
   isRamen: 0
   isTrash: 0
+  isMoving: 0
+  speed: 0.005
 --- !u!95 &-4088884618625362138
 Animator:
   serializedVersion: 4
