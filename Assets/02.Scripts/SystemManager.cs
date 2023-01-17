@@ -13,12 +13,13 @@ public class FoodLevel
 public class SystemManager : MonoBehaviour
 {
     public FoodManager foodManager;
+    public MoneyCount moneyCount;
 
     public List<FoodLevel> foodList = new List<FoodLevel>();
     public GameObject Quit;
     public Text Score, BestScore, Plus;
 
-    bool wait, move, stop;
+    public bool wait, move, stop;
     int x, y, i, j, k, l, score;
     Vector3 firstPos, gap;
     GameObject[,] Square = new GameObject[4, 4];
@@ -163,6 +164,7 @@ public class SystemManager : MonoBehaviour
     // 스폰
     void Spawn()
     {
+
         while (true) { x = UnityEngine.Random.Range(0, 4); y = UnityEngine.Random.Range(0, 4); if (Square[x, y] == null) break; }
 
         // 처음나올 때 다른 0레벨 재료 
@@ -198,12 +200,15 @@ public class SystemManager : MonoBehaviour
 
     public void Reset()
     {
+        if (stop) return;
+
         for(int i = 0; i < 4; i++)
         {
             for(int j = 0; j < 4; j++)
             {
                 if (Square[i, j] != null) {
                     Debug.Log(Square[i, j]);
+                    moneyCount.trashCount++;
                     Destroy(Square[i, j]);
                 }
             }
