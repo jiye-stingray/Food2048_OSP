@@ -10,9 +10,12 @@ public enum FoodEnum
 }
 public class DialogueData : MonoBehaviour
 {
+    public SystemManager systemManager;
+
     public TMP_Text orderText;
     public GameObject[] NPC;
     public GameObject speechbubble;
+    public GameObject[] receipPic;
     public FoodEnum receip;
 
     public static DialogueData instance;
@@ -77,8 +80,11 @@ public class DialogueData : MonoBehaviour
                 }*/
             speechbubble.SetActive(true);
             orderText.text = _menuName[selectMenu];
-                //orderText.text = _menuName[orderDetails];
-                receip = (FoodEnum)(selectMenu);
+            receipPic[selectMenu].SetActive(true);
+            systemManager.stop = false;
+
+            //orderText.text = _menuName[orderDetails];
+            receip = (FoodEnum)(selectMenu);
             FoodManager.instance.SetReceip(receip);
 
         });
@@ -87,11 +93,16 @@ public class DialogueData : MonoBehaviour
 
     public void OrderEnd()
     {
+        systemManager.stop = true;
         NPC[npcNum].transform.DOMove(new Vector3(-3.8f, 1, 1), 1).OnComplete(() =>
           {
               orderText.text = "";
               speechbubble.SetActive(false);
               NPC[npcNum].SetActive(false);
+              for (int i = 0; i < System.Enum.GetValues(typeof(FoodEnum)).Length; i++)
+              {
+                  receipPic[i].SetActive(false);
+              }
               Order();
           });
     }

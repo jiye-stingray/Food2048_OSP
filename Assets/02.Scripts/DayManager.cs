@@ -69,7 +69,6 @@ public class DayManager : MonoBehaviour
             dayUI.gameObject.SetActive(true);
             DayCalculate();
             isfinish = true;
-            dayCount++;
         }
     }
 
@@ -99,6 +98,7 @@ public class DayManager : MonoBehaviour
         {
             isfinish = false;
             systemManager.stop = false;
+            dayCount++;
             DialogueData.instance.OrderEnd();
             dayUI.gameObject.SetActive(false);
 

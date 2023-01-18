@@ -73,8 +73,8 @@ public class FlowManager : MonoBehaviour
         //gameManager.money = moneyCount.money;
         //gameManager.time = _playTime;
         //moneyCount.SalesRamen();
-        DialogueData.instance.OrderEnd();
         systemManager.Reset();
+        DialogueData.instance.OrderEnd();
         Debug.Log("라멘 팔았다!");
         //SceneManager.LoadScene("GameScene");
     }

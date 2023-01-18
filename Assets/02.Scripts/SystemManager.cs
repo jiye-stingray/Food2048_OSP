@@ -206,10 +206,12 @@ public class SystemManager : MonoBehaviour
         {
             for(int j = 0; j < 4; j++)
             {
-                if (Square[i, j] != null) {
-                    Debug.Log(Square[i, j]);
+                if (Square[i, j] != null)
+                {
                     moneyCount.trashCount++;
+                    Debug.Log("Square[" + i + ", " + j + "]" + " " + Square[i, j].name);
                     Destroy(Square[i, j]);
+                    Square[i, j] = null;
                 }
             }
         }
